@@ -9,6 +9,11 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var errorL: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +54,40 @@ class ViewController: UIViewController {
         
         
     }
-
+    
+    @IBAction func SignInBtnClicked(_ sender: Any) {
+        
+        if emailTF.text != ""{
+            if passwordTF.text != ""{
+                
+                let query = PFQuery(className: "Users")
+                query.whereKey("email", contains: emailTF.text).whereKey("password", contains: passwordTF.text)
+                query.findObjectsInBackground { object, error in
+                    if object != [] && error == nil{
+                        self.errorL.text = ""
+                        print("success login")
+                        self.performSegue(withIdentifier: "AppNavigationControl", sender: nil)
+                        
+                    }else{
+                        print("error \(error) ----- object \(object)")
+                        self.errorL.text = "Sorry, your email or password was incorrect."
+                    }
+                }
+                
+            }else{
+                errorL.text = "Password can not be empty!"
+            }
+            
+        }else{
+            errorL.text = "Email can not be empty!"
+            
+        }
+        
+        
+        
+        
+    }
+    
 
 }
 

@@ -41,6 +41,7 @@ class SignUpViewController: UIViewController {
                                 let parseObject = PFObject(className: "Users")
                                 parseObject["name"] = nameTF.text
                                 parseObject["surname"] = surnameTF.text
+                                parseObject["email"] = emailTF.text
                                 parseObject["password"] = passwordTF.text
                                 parseObject.saveInBackground { success, error in
                                     if success {
