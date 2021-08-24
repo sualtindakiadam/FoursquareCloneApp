@@ -15,6 +15,7 @@
 		958949E526D4E89200E8216F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958949E426D4E89200E8216F /* Assets.xcassets */; };
 		958949E826D4E89200E8216F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 958949E626D4E89200E8216F /* LaunchScreen.storyboard */; };
 		95A80EFC26D51391007ACE7A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A80EFB26D51391007ACE7A /* SignUpViewController.swift */; };
+		95A80EFE26D5257B007ACE7A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A80EFD26D5257B007ACE7A /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		958949E726D4E89200E8216F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		958949E926D4E89200E8216F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95A80EFB26D51391007ACE7A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		95A80EFD26D5257B007ACE7A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B50AD12D210DE4527F293F2A /* Pods-FoursquareCloneApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoursquareCloneApp.debug.xcconfig"; path = "Target Support Files/Pods-FoursquareCloneApp/Pods-FoursquareCloneApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				95A80EFB26D51391007ACE7A /* SignUpViewController.swift */,
+				95A80EFD26D5257B007ACE7A /* HomeViewController.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A80EFE26D5257B007ACE7A /* HomeViewController.swift in Sources */,
 				958949E026D4E89100E8216F /* ViewController.swift in Sources */,
 				958949DC26D4E89100E8216F /* AppDelegate.swift in Sources */,
 				95A80EFC26D51391007ACE7A /* SignUpViewController.swift in Sources */,

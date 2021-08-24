@@ -38,6 +38,8 @@ class SignUpViewController: UIViewController {
                                 
                                 // saving process
                                 
+                                /*
+                                 // kendi çözümüm
                                 let parseObject = PFObject(className: "Users")
                                 parseObject["name"] = nameTF.text
                                 parseObject["surname"] = surnameTF.text
@@ -48,12 +50,28 @@ class SignUpViewController: UIViewController {
                                         self.performSegue(withIdentifier: "LoginScreenVC", sender: nil)
                                         print("success saved")
                                     }else{
-                                        self.errorL.text = error?.localizedDescription
+                                        self.makeALert(title: "Error", errorMessage: error?.localizedDescription ?? "Hata") //pop up error example
+                                    }
+                                }*/
+                                
+                                //parse yöntemi--------------------------------------------------------------------------------
+                                let user = PFUser()
+                                user.username =  nameTF.text
+                                user.password = passwordTF.text
+                                
+                                user.signUpInBackground { success, error in
+                                    
+                                    if error != nil{
+                                        self.makeALert(title: "Error", errorMessage: "User / Password ? ")
+                                    }else {
+                                        self.performSegue(withIdentifier: "LoginScreenVC", sender: nil)
                                     }
                                 }
+                             //-------------------------------------------------------------------------------------------------
                                 
                                 
                             }else{
+                               
                                 errorL.text = "Password did not match!"
                             }
                         }else{
@@ -74,11 +92,13 @@ class SignUpViewController: UIViewController {
             
             errorL.text = "Name can not be empty!"
         }
-        
-        
-
-        
-        
+    }
+    
+    func makeALert(title:String,errorMessage:String) {
+        let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+        let okBtn = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okBtn)
+        present(alert, animated: true, completion: nil)
         
     }
     

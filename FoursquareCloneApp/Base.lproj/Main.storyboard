@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="849" y="80"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="Pdh-Ut-cHy">
             <objects>
-                <viewController id="6n3-u9-05r" sceneMemberID="viewController">
+                <viewController id="6n3-u9-05r" customClass="HomeViewController" customModule="FoursquareCloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JeZ-c9-eAw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPj-7a-LYw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2288" y="80"/>
+            <point key="canvasLocation" x="2290" y="80"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dzn-26-WCk">

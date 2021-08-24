@@ -59,7 +59,8 @@ class ViewController: UIViewController {
         
         if emailTF.text != ""{
             if passwordTF.text != ""{
-                
+                /*
+                // kendi login yöntemim
                 let query = PFQuery(className: "Users")
                 query.whereKey("email", contains: emailTF.text).whereKey("password", contains: passwordTF.text)
                 query.findObjectsInBackground { object, error in
@@ -72,7 +73,20 @@ class ViewController: UIViewController {
                         print("error \(error) ----- object \(object)")
                         self.errorL.text = "Sorry, your email or password was incorrect."
                     }
+                }*/
+                
+                // parse login yöntemi----------------------------------------------------------------------------------------
+                PFUser.logInWithUsername(inBackground: emailTF.text!, password: passwordTF.text!) { user, error in
+                    if error != nil {
+                        self.errorL.text = "şifre hatalı"
+                    }else{
+                        print("----------------------------------")
+                        print(user)
+                        self.performSegue(withIdentifier: "AppNavigationControl", sender: nil)
+                    }
+                    
                 }
+                //-----------------------------------------------------------------------------------------------------------
                 
             }else{
                 errorL.text = "Password can not be empty!"
