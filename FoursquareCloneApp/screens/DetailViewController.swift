@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 import Parse
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var detailsImageView: UIImageView!
     @IBOutlet weak var detailsNameL: UILabel!
@@ -27,6 +27,8 @@ class DetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         print(choosenPlaceId)
+        
+        detailsMapView.delegate = self
         
         getDataFromParse()
         
@@ -79,6 +81,41 @@ class DetailViewController: UIViewController {
         }
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let reuseID = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            pinView?.canShowCallout = true
+            let button = UIButton(type: .detailDisclosure)
+            pinView?.rightCalloutAccessoryView = button
+        }else{
+            pinView?.annotation = annotation
+        }
+        return pinView
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if self.chosenLat != 0.0 && self.chosenLong != 0.0{
+            let requestLocation = CLLocation(latitude: self.chosenLat, longitude: self.chosenLong)
+            
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { placemarks, error in
+                if let placemark = placemarks {
+                    if placemark.count > 0 {
+                        let mkPlaceMark = MKPlacemark(placemark: placemark[0])
+                        let mapItem = MKMapItem(placemark: mkPlaceMark)
+                        mapItem.name = self.detailsNameL.text
+                        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+                        mapItem.openInMaps(launchOptions: launchOptions)
+                    }
+                }
+            }
+        }
+    }
 
 
 
